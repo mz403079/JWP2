@@ -1,7 +1,34 @@
 ALL_SPACES = list('123456789')  # Klucze słownika planszy KIK.
 X, O, BLANK = 'X', 'O', ' '  # Stałe reprezentujące wartości tekstowe.
 
+class Game:
+    def __init__(self):
+        board = {}  # Plansza jest reprezentowana przez słownik Pythona.
+        for space in ALL_SPACES:
+            board[space] = BLANK  # Wszystkie pola na początku są puste.
+        self.__board = board
+        self.__currentPlayer = X,
+        self.__nextPlayer = O
+    
+    def __str__(self):
+        return f'''
+            {self.__board['1']}|{self.__board['2']}|{self.__board['3']} 1 2 3 
+            -+-+- 
+            {self.__board['4']}|{self.__board['5']}|{self.__board['6']} 4 5 6 
+            -+-+- 
+            {self.__board['7']}|{self.__board['8']}|{self.__board['9']} 7 8 9'''        
 
+    def isValidSpace(self, space):
+        if space is None:
+            return False
+        return space in ALL_SPACES or self.__board[space] == BLANK
+
+    def isBoardFull(self):
+        for space in ALL_SPACES:
+            if self.__board[space] == BLANK:
+                return False # Jeśli nawet jedno pole jest puste, zwracaj False.
+        return True # Nie ma wolnych pól, zatem zwróć True.
+    
 def main():
     """Rozgrywka w kółko i krzyżyk."""
     print('Witaj w grze kółko i krzyżyk!')
