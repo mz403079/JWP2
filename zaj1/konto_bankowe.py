@@ -21,7 +21,7 @@ class KontoBankowe:
         print(f"Stan konta: {self.__stan_konta} PLN.")
 
 # Użycie klasy
-konto = KontoBankowe('123456789', 1000)
+konto = KontoBankowe('123456789', 2000)
 konto.wplac_pieniadze(500)
 konto.wyplac_pieniadze(200)
 konto.pokaz_stan_konta()  # Wypisze aktualny stan konta
